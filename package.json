@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "description": "Feature flag and release management system",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "build": "turbo build"
+  },
   "keywords": [],
   "author": "Matt Layton",
   "license": "UNLICENSED",
