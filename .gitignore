@@ -6,6 +6,10 @@ node_modules/
 .env.*
 !.env.example
 
+packages/db/prisma/.env
+packages/db/prisma/.env.*
+!packages/db/prisma/.env.example
+
 # logs
 *.log
 
