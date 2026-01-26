@@ -4,15 +4,15 @@ async function main() {
 	// Upsert means "insert if missing, otherwise update"
 	// This makes the seed script safe to run repeatedly.
 	await db.user.upsert({
-		where: { email: "admin@valve.local " },
+		where: { email: "admin@valve.local" },
 		update: {},
-		create: { email: "admin@valve.local" },
+		create: { email: "admin@valve.local", role: "ADMIN" },
 	});
 
 	await db.user.upsert({
 		where: { email: "dev@valve.local" },
 		update: {},
-		create: { email: "dev@valve.local" },
+		create: { email: "dev@valve.local", role: "USER" },
 	});
 }
 
