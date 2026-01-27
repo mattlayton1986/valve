@@ -2,5 +2,10 @@
     "name": "@valve/eslint-config",
     "version": "0.0.0",
     "private": true,
-    "main": "./base.js"
+    "type": "module",
+    "exports": {
+        "./base": "./base.mjs",
+        "./next": "./next.mjs",
+        "./typed": "./typed.mjs"
+    }
 }

@@ -3,10 +3,16 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"scripts": {
+		"lint": "eslint ."
+	},
 	"exports": {
 		".": "./src/index.ts"
 	},
 	"dependencies": {
 		"@valve/db": "workspace:*"
+	},
+	"devDependencies": {
+		"@valve/eslint-config": "workspace:*"
 	}
 }
