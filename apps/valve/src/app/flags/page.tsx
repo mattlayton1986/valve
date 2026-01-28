@@ -1,4 +1,4 @@
-export default function Flags() {
+export default function FlagsPage() {
 	return (
 		<div>
 			<h1 className="text-2xl font-semibold">Feature Flags</h1>
