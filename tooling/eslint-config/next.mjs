@@ -2,6 +2,15 @@ import base from './base.mjs';
 import next from '@next/eslint-plugin-next';
 
 export default [
+	{
+		ignores: [
+			"**/.next/**",
+			"**/out/**",
+			"**/build/**",
+			"**/dist/**",
+			"**/node_modules/**",
+		]
+	},
 	...base,
 	{
 		plugins: {
