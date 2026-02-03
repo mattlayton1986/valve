@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '@/auth';
+import type { UserRole } from '@valve/db';
 
 export async function requireSignedIn(next: string = '/') {
 	const session = await getServerAuthSession();
@@ -10,7 +11,7 @@ export async function requireSignedIn(next: string = '/') {
 	return session;
 }
 
-export async function requireRole(role: 'ADMIN' | 'USER', next: string = '/') {
+export async function requireRole(role: UserRole, next: string = '/') {
 	const session = await requireSignedIn(next);
 	if (session.user.role !== role) {
 		redirect('/');

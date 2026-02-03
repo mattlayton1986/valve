@@ -2,6 +2,7 @@ import NextAuth, { type NextAuthOptions } from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import GitHubProvider from 'next-auth/providers/github';
 import { getServerSession } from 'next-auth/next';
+import type { UserRole } from '@valve/db';
 
 import { db } from '@valve/db';
 
@@ -21,7 +22,7 @@ export const authOptions: NextAuthOptions = {
 			// Expose databse user id and role on the session
 			if (session.user) {
 				session.user.id = user.id;
-				session.user.role = user.role ?? 'USER';
+				session.user.role = (user.role ?? 'USER') as UserRole;
 			}
 			return session;
 		},
