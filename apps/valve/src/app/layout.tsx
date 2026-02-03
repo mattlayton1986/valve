@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { HeaderAuth } from '@/components/auth/HeaderAuth';
 import type { Metadata } from 'next';
 import './globals.css';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: 'Valve',

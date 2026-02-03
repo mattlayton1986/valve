@@ -16,6 +16,16 @@ export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: 'database',
 	},
+	callbacks: {
+		async session({ session, user }) {
+			// Expose databse user id and role on the session
+			if (session.user) {
+				session.user.id = user.id;
+				session.user.role = user.role ?? 'USER';
+			}
+			return session;
+		},
+	},
 };
 
 export const authHandler = NextAuth(authOptions);
