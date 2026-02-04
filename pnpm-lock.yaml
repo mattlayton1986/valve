@@ -73,6 +73,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.2.3(@types/react@19.2.10)
+      '@valve/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@valve/db':
         specifier: workspace:*
         version: link:../../packages/db

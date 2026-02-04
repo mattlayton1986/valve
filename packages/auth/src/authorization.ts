@@ -27,3 +27,18 @@ export function requireAdmin(user: AuthenticatedUser | null): AuthenticatedUser 
 	}
 	return u;
 }
+
+/**
+ * Helper to enforce a shared contract for AuthenticatedUser shape.
+ */
+export function toAuthenticatedUser(user: {
+	id: string;
+	email?: string | null;
+	role: UserRole;
+}): AuthenticatedUser {
+	return {
+		id: user.id,
+		email: user.email ?? '',
+		role: user.role,
+	};
+}
