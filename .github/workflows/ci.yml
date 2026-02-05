@@ -50,6 +50,9 @@ jobs:
           restore-keys: |
             turbo-${{ runner.os }}-
       
+      - name: Generate Prisma client
+        run: pnpm --filter @valve/db run db:generate
+      
       - name: Lint
         run: pnpm lint
       
