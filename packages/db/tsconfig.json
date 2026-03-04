@@ -2,6 +2,10 @@
 	"extends": "@valve/tsconfig/node",
 	"compilerOptions": {
 		"outDir": "dist",
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": false,
+		"declarationDir": "dist",
 		"rootDir": ".",
 		"types": ["node"]
 	},
