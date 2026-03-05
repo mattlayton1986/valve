@@ -18,6 +18,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@valve/db": "workspace:*",
+    "@valve/auth": "workspace:*",
     "@valve/eslint-config": "workspace:*",
     "eslint": "^9",
     "tailwindcss": "^4",

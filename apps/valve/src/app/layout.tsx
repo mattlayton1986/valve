@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AuthControl } from "@/components/auth/AuthControl";
+import { HeaderAuth } from '@/components/auth/HeaderAuth';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -27,9 +27,9 @@ export default function RootLayout({
               </nav>
             </div>
 
-             {/* Auth area - UI scaffolding only */}
+            {/* Auth area - UI scaffolding only */}
           <div className="flex items-center gap-3 text-sm">
-            <AuthControl state="signedOut" />
+            <HeaderAuth />
           </div>
           </div>
         </header>

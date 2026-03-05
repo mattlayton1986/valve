@@ -1,6 +1,17 @@
-import Link from 'next/link';
+import { GitHubSignInButton } from "@/components/auth/GitHubSignInButton";
 
 type SearchParams = Record<string, string | string[] | undefined>;
+
+// param typed as "unknown" for user-controlled input since we
+// can't guarantee this will be a string. Function body demands
+// proof of string type. 
+function safeNext(nextParam: unknown) {
+	if (typeof nextParam !== 'string') return '/';
+	if (!nextParam.startsWith('/')) return '/';
+	// prevents "//evil.com" style hacks
+	if (nextParam.startsWith('//')) return '/';
+	return nextParam;
+}
 
 export default async function LoginPage({
 	searchParams,
@@ -8,42 +19,23 @@ export default async function LoginPage({
 	searchParams?: Promise<SearchParams>;
 }) {
 	const sp = (await searchParams) ?? {};
+	const next = safeNext(sp.next);
 
-	const next = typeof sp?.next === 'string' && sp.next.startsWith('/')
-		? sp.next
-		: '/';
 	return (
-		<div className="space-y-6">
-			<header className="space-y-2">
+		<main className="min-h-screen flex items-center justify-center p-6">
+			<div className="w-full max-w-md rounded-lg border p-6">
 				<h1 className="text-2xl font-semibold">Sign in</h1>
-				<p className="txt-sm text-muted-foreground">
-					Authentication isn't wired yet. This is UI scaffolding only.
-				</p>
-			</header>
-
-			<div className="rounded-lg border p-4">
-				<p className="text-sm">
-					This page will eventually offer OAuth sign-in (GitHub) and session-based access.
+				<p className="mt-2 text-sm text-muted-foreground">
+					After signing in, you'll be returned to <span className="font-medium">{next}</span>.
 				</p>
 
-				<div className="mt-4 flex gap-3">
-					<button
-						type="button"
-						disabled
-						className="rounded-md border px-3 py-2 text-sm opacity-60"
-						title="Auth runtime not wired yet"
-					>
-						Continue with GitHub (disabled)
-					</button>
+				<GitHubSignInButton callbackUrl={next} />
 
-					<Link href={next} className="rounded-md border px-3 py-2 text-sm hover:underline">
-					Back</Link>
-				</div>
-
-				<p className="mt-3 text-xs text-muted-foreground">
-					After sign-in, you'll be redirected to: <span className="font-mono">{next}</span>
+				<p className="mt-4 text-sx text-muted-foreground">
+					Tip: You can test redirects by visiting{" "}
+					<code className="rounded bg-muted px-1 py-0.5">/login?next=/flags</code>.
 				</p>
 			</div>
-		</div>
+		</main>
 	);
 }
